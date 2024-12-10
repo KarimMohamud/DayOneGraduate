@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0isi8quty55w"]
+
+[ext_resource type="Script" path="res://f_paper.gd" id="1_oufth"]
+[ext_resource type="Texture2D" uid="uid://c0eb0y6qfv5kk" path="res://PlayerAnimations/F_paper.png" id="2_on0h5"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_oufth")
+f_paper_texture = ExtResource("2_on0h5")

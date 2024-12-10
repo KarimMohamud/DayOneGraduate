@@ -1,0 +1,227 @@
+[gd_scene load_steps=27 format=3 uid="uid://c0boi1n5qfux1"]
+
+[ext_resource type="Script" path="res://node_2d.gd" id="1_n535s"]
+[ext_resource type="Script" path="res://character_body_2d.gd" id="2_aa72c"]
+[ext_resource type="Texture2D" uid="uid://difljibf4jwe2" path="res://PlayerAnimations/A_plus_paper.png" id="2_ospxk"]
+[ext_resource type="Texture2D" uid="uid://dnje13hof3xhq" path="res://PlayerAnimations/BG.png" id="3_d4515"]
+[ext_resource type="Texture2D" uid="uid://dfmcjo7vhuvfw" path="res://PlayerAnimations/Idle.png" id="4_rqigg"]
+[ext_resource type="Texture2D" uid="uid://c5g1ul00ehofp" path="res://PlayerAnimations/Walk.png" id="5_byerq"]
+[ext_resource type="AudioStream" uid="uid://c7lehw7q1h4jl" path="res://lofi_gameprogect.mp3" id="7_mq2oy"]
+[ext_resource type="Script" path="res://health.tres.gd" id="8_e1jn4"]
+[ext_resource type="Script" path="res://game_over.gd" id="9_8ctju"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ivr3b"]
+size = Vector2(1920, 50)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_p46vq"]
+a = Vector2(1, 1030)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_sprgf"]
+a = Vector2(97, 1005)
+b = Vector2(98, -24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_62y7g"]
+atlas = ExtResource("4_rqigg")
+region = Rect2(6, 21, 17, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6wwt3"]
+atlas = ExtResource("4_rqigg")
+region = Rect2(53, 21, 17, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m4hto"]
+atlas = ExtResource("4_rqigg")
+region = Rect2(101, 21, 17, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_772cw"]
+atlas = ExtResource("4_rqigg")
+region = Rect2(149, 21, 17, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1t4f"]
+atlas = ExtResource("5_byerq")
+region = Rect2(58, 20, 13, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3rrgp"]
+atlas = ExtResource("5_byerq")
+region = Rect2(148, 21, 24, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o2bbr"]
+atlas = ExtResource("5_byerq")
+region = Rect2(7, 21, 19, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_212lw"]
+atlas = ExtResource("5_byerq")
+region = Rect2(101, 20, 21, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c0bp7"]
+atlas = ExtResource("5_byerq")
+region = Rect2(201, 20, 14, 28)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h2vws"]
+atlas = ExtResource("5_byerq")
+region = Rect2(245, 20, 20, 28)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2412o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_62y7g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6wwt3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m4hto")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_772cw")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b1t4f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3rrgp")
+}],
+"loop": true,
+"name": &"Jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o2bbr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b1t4f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_212lw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3rrgp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c0bp7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h2vws")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qqlw5"]
+size = Vector2(119.429, 158.38)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ow5ga"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kt3ck"]
+bg_color = Color(0.5139, 0.190899, 0.155136, 1)
+
+[node name="Node_2d" type="Node2D"]
+script = ExtResource("1_n535s")
+a_plus_texture = ExtResource("2_ospxk")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+scale = Vector2(1.2549, 1.25581)
+texture = ExtResource("3_d4515")
+
+[node name="Play_Area" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Play_Area"]
+position = Vector2(960, 1055)
+shape = SubResource("RectangleShape2D_ivr3b")
+
+[node name="LeftWall_CollisionShape2D" type="CollisionShape2D" parent="Play_Area"]
+shape = SubResource("SegmentShape2D_p46vq")
+
+[node name="RightWall_CollisionShape2D" type="CollisionShape2D" parent="Play_Area"]
+position = Vector2(1822, 25)
+shape = SubResource("SegmentShape2D_sprgf")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(927, 970)
+scale = Vector2(0.954545, 0.981818)
+script = ExtResource("2_aa72c")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+position = Vector2(12.8961, -19.9267)
+scale = Vector2(7.48002, 5.76675)
+sprite_frames = SubResource("SpriteFrames_2412o")
+animation = &"Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(11.5238, -19.6065)
+shape = SubResource("RectangleShape2D_qqlw5")
+
+[node name="Health" type="Node2D" parent="CharacterBody2D" node_paths=PackedStringArray("health_bar")]
+position = Vector2(-971.143, -987.963)
+scale = Vector2(1.04762, 1.01852)
+script = ExtResource("8_e1jn4")
+health_bar = NodePath("../../ProgressBar")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = 15.9999
+offset_top = 16.0
+offset_right = 577.0
+offset_bottom = 83.0
+theme_override_styles/background = SubResource("StyleBoxFlat_ow5ga")
+theme_override_styles/fill = SubResource("StyleBoxFlat_kt3ck")
+max_value = 3.0
+value = 3.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="."]
+offset_left = 1722.0
+offset_top = 7.0
+offset_right = 1915.0
+offset_bottom = 91.0
+theme_override_font_sizes/font_size = 30
+horizontal_alignment = 1
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_mq2oy")
+autoplay = true
+playback_type = 1
+parameters/looping = false
+
+[node name="GameOver" type="CanvasLayer" parent="."]
+process_mode = 3
+script = ExtResource("9_8ctju")
+
+[node name="Panel" type="Panel" parent="GameOver"]
+offset_left = 320.0
+offset_top = 190.0
+offset_right = 1600.0
+offset_bottom = 840.0
+
+[node name="Label" type="Label" parent="GameOver"]
+offset_left = 384.0
+offset_top = 256.0
+offset_right = 1536.0
+offset_bottom = 512.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 70
+text = "Game Over!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Retry" type="Button" parent="GameOver"]
+offset_left = 704.0
+offset_top = 576.0
+offset_right = 1216.0
+offset_bottom = 768.0
+theme_override_font_sizes/font_size = 40
+text = "Retry!"
+
+[connection signal="health_changed" from="CharacterBody2D/Health" to="GameOver" method="_on_health_health_changed"]
+[connection signal="pressed" from="GameOver/Retry" to="GameOver" method="_on_retry_pressed"]

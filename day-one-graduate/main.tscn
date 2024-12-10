@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://crduvawysbo4y"]
+
+[ext_resource type="Texture2D" uid="uid://dnje13hof3xhq" path="res://PlayerAnimations/BG.png" id="1_4qoto"]
+[ext_resource type="PackedScene" uid="uid://bylcvatnxxd4b" path="res://main_menu_character.tscn" id="2_u5437"]
+[ext_resource type="AudioStream" uid="uid://c7lehw7q1h4jl" path="res://lofi_gameprogect.mp3" id="3_v6msb"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_gwtoo"]
+
+[sub_resource type="GDScript" id="GDScript_fv62f"]
+script/source = "extends Button
+
+
+func _on_quit_pressed() -> void:
+	get_tree().quit()
+
+
+func _on_pressed() -> void:
+	get_tree().change_scene_to_file(\"res://node_2d.tscn\")
+"
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_mf2jk"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Bg" type="Sprite2D" parent="."]
+position = Vector2(960.5, 540.001)
+scale = Vector2(1.25556, 1.25582)
+texture = ExtResource("1_4qoto")
+
+[node name="Start" type="Button" parent="."]
+offset_left = 256.0
+offset_top = 64.0
+offset_right = 512.0
+offset_bottom = 256.0
+text = "Start"
+icon = SubResource("ViewportTexture_gwtoo")
+script = SubResource("GDScript_fv62f")
+
+[node name="Quit" type="Button" parent="."]
+offset_left = 1408.0
+offset_top = 64.0
+offset_right = 1664.0
+offset_bottom = 256.0
+text = "Quit"
+icon = SubResource("ViewportTexture_mf2jk")
+
+[node name="MainMenuCharacter" parent="." instance=ExtResource("2_u5437")]
+position = Vector2(943, 951)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_v6msb")
+autoplay = true
+
+[connection signal="pressed" from="Start" to="Start" method="_on_pressed"]
+[connection signal="pressed" from="Quit" to="Start" method="_on_quit_pressed"]
