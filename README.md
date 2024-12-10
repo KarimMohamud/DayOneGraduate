@@ -18,4 +18,5 @@ A 2D dodging game where you navigate a chaotic school hallway, dodging falling F
    * Press the **Run** button on the right side of the Godot editor.
 6. Enjoy the Game!
 
+Made by: Abdikarim Mohamud, Daria Zeldina, Jaanus Källi & Siiri Ruovinen
 We aim to upload an online version soon for easier access.
