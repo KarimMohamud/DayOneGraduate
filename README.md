@@ -19,5 +19,6 @@ A 2D dodging game where you navigate a chaotic school hallway, dodging falling F
 6. Enjoy the Game!
 
 Made by: Abdikarim Mohamud, Daria Zeldina, Jaanus Källi & Siiri Ruovinen.
+Made by: @FurqanNoor
 
 We aim to upload an online version soon for easier access.
